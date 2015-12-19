@@ -15,9 +15,15 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
 	var ref = new Firebase('https://cntx.firebaseio.com/contacts');
 	// Get Contacts
 	$scope.contacts = $firebaseArray(ref);
-	
+
+	// Open the panel for Contact details
+	$scope.openPanel = function (contact) {
+		$scope.contactPanel = contact;
+		$scope.contactPanelOpen = true;
+	}
+
 	// Show Add Form
-	$scope.showAddForm =function(){
+	$scope.showAddForm = function (){
 		$scope.addFormShow = true;
 	}
 	// Hide Add Form

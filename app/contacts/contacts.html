@@ -4,18 +4,19 @@
 
 	<!-- Show Contact -->
 	<div class="row" >
-		<div class="panel">
-			<h3>{{name}}</h3>
+		<div class="panel" ng-show="contactPanelOpen">
+			<h3>{{contactPanel.name}}</h3>
+			<a ng-click="contactPanelOpen = false" style="float: right;">Close</a>
 			<ul>
-				<li><strong>Company</strong>: {{company}}</li>
-				<li><strong>Email</strong>: {{email}}</li>
+				<li><strong>Company</strong>: {{contactPanel.company}}</li>
+				<li><strong>Email</strong>: {{contactPanel.email}}</li>
 				<h5>Phone Numbers</h5>
-				<li><strong>Work</strong>: {{work_phone}}</li>
-				<li><strong>Mobile</strong>: {{mobile_phone}}</li>
-				<li><strong>Home</strong>: {{home}}</li>
+				<li><strong>Work</strong>: {{contactPanel.work_phone}}</li>
+				<li><strong>Mobile</strong>: {{contactPanel.mobile_phone}}</li>
+				<li><strong>Home</strong>: {{contactPanel.home}}</li>
 				<h5>Location Info</h5>
-				<li>{{street_address}}</li>
-				<li>{{city}}, {{state}}, {{zipcode}}</li>
+				<li>{{contactPanel.street_address}}</li>
+				<li>{{contactPanel.city}}, {{contactPanel.state}}, {{contactPanel.zipcode}}</li>
 			</ul>
 		</div>
 	</div>
@@ -25,7 +26,7 @@
 		<div class="row">
 			<div class="large-4 columns">
 				<label>Name:
-					<input type="text" ng-model="Name" placeholder="Name" required>
+					<input type="text" ng-model="name" placeholder="Name" required>
 				</label>
 			</div>
 			<div class="large-4 columns">
@@ -93,7 +94,7 @@
 
 	</form>
 
-		<h3>Your Contacts (3)</h3>
+		<h3>Your Contacts ({{contacts.length}})</h3>
 			<table>
 				<thead>
 					<tr>
@@ -104,8 +105,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="contacts in contacts">
-						<td><a ng-click="showContact(contact)">{{contact.name}}</a></td>
+					<tr ng-repeat="contact in contacts">
+						<td><a ng-click="openPanel(contact)">{{contact.name}}</a></td>
 						<td>{{contact.company}}</td>
 						<td>{{contact.email}}</td>
 						<td><a class="button tiny" ng-click="showEditForm(contact)">Edit</a>
