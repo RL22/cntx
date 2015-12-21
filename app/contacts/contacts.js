@@ -84,8 +84,7 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
 			]
 		}).then(function(ref){
 			var id = ref.key();
-			console.log('Added Contact with ID: '+id);
-
+			
 			// Clear Form
 			clearFields();
 
@@ -105,7 +104,6 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
 		
 		//get record
 		var record = $scope.contacts.$getRecord(id);
-		console.log($scope.contacts[0]);
 		
 		//Assign Values
 		record.name 						= $scope.name;
@@ -125,6 +123,7 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
 		});
 
 		clearFields();
+		
 
 		//Hide Form
 		$scope.editFormShow = false;
@@ -147,6 +146,14 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
 		$scope.zipcode = contact.address[0].zipcode;
 		
 		$scope.contactShow = true;
+	}
+
+	$scope.removeContact = function(contact){
+		console.log("removing contact");
+
+		$scope.contacts.$remove(contact);
+
+		$scope.msg = "contact removed";
 	}
 
 	// Clear $scope fields
