@@ -1,8 +1,8 @@
 # cntx
-Cntx is a contact application with CRUD capabilities, built with Angular &amp; Firebase.
+Cntx is a contact application with CRUD (create, read, update & delete) capabilities, built with AngularJS &amp; Firebase cloud database.
 
 #Specs
-
+The <a href="https://github.com/angular/angular-seed">Angular-Seed</a> boilerplate was used to kick-off development. I added Firebase via Angularfire for the CRUD capabilities and Foundation 5 for responsivness and styling. 
 #Reqs
 
 node v0.12.9
